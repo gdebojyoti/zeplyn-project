@@ -14,6 +14,7 @@ const Sidebar = ({
 }) => {
   return (
     <aside className='sidebar'>
+      <h2 className='panel-name'>Explorer</h2>
       <Label
         setEditorContent={setEditorContent}
         setSelectedFilePath={setSelectedFilePath}
@@ -28,7 +29,8 @@ const Label = ({
   tree,
   setEditorContent,
   setSelectedFilePath,
-  selectedFilePath
+  selectedFilePath,
+  depth = 0
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const { type, path, nodes, content } = tree
@@ -44,8 +46,8 @@ const Label = ({
 
   if (type === 'folder') {
     return (
-      <div className='label'>
-        <span className='label--file' onClick={toggleCollapse}>
+      <>
+        <span className='label' style={{ paddingLeft: `${depth * 10}px` }} onClick={toggleCollapse}>
           {isCollapsed ? <ChevronRight /> : <ChevronDown />}
           <span>{getFileName(path)}</span>
         </span>
@@ -56,26 +58,25 @@ const Label = ({
               setSelectedFilePath={setSelectedFilePath}
               selectedFilePath={selectedFilePath}
               tree={node}
+              depth={depth + 1}
               key={index}
             />
           ))}
-      </div>
+      </>
     )
   }
 
   if (type === 'file') {
     const Icon = getFileIcon(path)
-    const isSelected = selectedFilePath === path
+
+    const className = `label ${
+      selectedFilePath === path && 'label--selected'
+          }`
 
     return (
-      <div className='label label--file'>
+      <div className={className} style={{ paddingLeft: `${depth * 10}px` }} onClick={selectFile}>
         <Icon />
-        <span
-          className={`label__file-icon ${
-            isSelected && 'label__file-icon--selected'
-          }`}
-          onClick={selectFile}
-        >
+        <span className='label__file-name'>
           {getFileName(path)}
         </span>
       </div>

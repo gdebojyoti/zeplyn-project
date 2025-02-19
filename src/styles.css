@@ -1,3 +1,11 @@
+/* css reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
 html,
 body,
 #root {
@@ -9,6 +17,14 @@ body,
   width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+/* css variables */
+:root {
+  --panel-bg-color: #262627;
+  --panel-highlight-color: #36363B;
+  --panel-hover-color: #2A2D2E;
+  --editor-bg-color: #202020;
 }
 
 svg {
@@ -25,46 +41,58 @@ svg {
 .sidebar {
   min-width: 250px;
   font-size: 14px;
-  background-color: #222;
+  background-color: var(--panel-bg-color);
+}
+
+.panel-name {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  padding-left: 15px;
+  text-transform: uppercase;
+  font-size: 11px;
 }
 
 .label {
-  margin: 5px 0 0 10px;
-  cursor: pointer;
-}
-.label--file {
   display: flex;
   align-items: center;
+  height: 22px;
+  user-select: none;
+  cursor: pointer;
 }
-.label--file:hover {
-  font-weight: bold;
+.label:hover {
+  background-color: var(--panel-hover-color);
+}
+.label--selected {
+  background-color: var(--panel-highlight-color);
 }
 
-.label__file-icon {
+.label__file-name {
   margin-left: 3px;
-}
-.label__file-icon--selected {
-  font-weight: bold;
 }
 
 .editor {
   flex-grow: 1;
-  background-color: #555;
+  background-color: var(--editor-bg-color);
   border-left: solid 1px #333;
 }
 
 .editor__header {
   display: flex;
-  background-color: #222;
+  height: 35px;
   border-bottom: solid 1px #333;
+  background-color: var(--panel-bg-color);
 }
 .editor__tab {
+  display: flex;
+  align-items: center;
+  padding-inline: 15px;
+  border-right: solid 1px #333;
   font-size: 14px;
   font-weight: bold;
-  padding: 5px 8px;
-  border-right: solid 1px #333;
+  background-color: var(--editor-bg-color);
 }
 
 .editor__window {
-  padding: 8px;
+  padding: 15px;
 }
