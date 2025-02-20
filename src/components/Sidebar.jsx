@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ChevronDown } from '../assets/ChevronDown'
 import { ChevronRight } from '../assets/ChevronRight'
@@ -6,15 +6,21 @@ import { ChevronRight } from '../assets/ChevronRight'
 import getFileIcon from '../utils/getFileIcon'
 import getFileName from '../utils/getFileName'
 
+import { dummyStyle, PanelNameStyle } from './style'
+
 const Sidebar = ({
   tree,
   setEditorContent,
   setSelectedFilePath,
   selectedFilePath
 }) => {
+  const [isEnabled, setIsEnabled] = useState(false)
+  useEffect(() => {
+    setTimeout(() => setIsEnabled(true), 2000)
+  }, [])
   return (
-    <aside className='sidebar'>
-      <h2 className='panel-name'>Explorer</h2>
+    <aside className={dummyStyle}>
+      <PanelNameStyle className='panel-name' isEnabled={isEnabled}>Explorer</PanelNameStyle>
       <Label
         setEditorContent={setEditorContent}
         setSelectedFilePath={setSelectedFilePath}
