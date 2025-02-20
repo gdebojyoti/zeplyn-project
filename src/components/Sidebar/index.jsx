@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { ChevronDown } from '../assets/ChevronDown'
-import { ChevronRight } from '../assets/ChevronRight'
+import { ChevronDown } from '../../assets/ChevronDown'
+import { ChevronRight } from '../../assets/ChevronRight'
 
-import getFileIcon from '../utils/getFileIcon'
-import getFileName from '../utils/getFileName'
+import getFileIcon from '../../utils/getFileIcon'
+import getFileName from '../../utils/getFileName'
 
-import { dummyStyle, PanelNameStyle } from './style'
+import { LabelStyle, panelNameStyle, sidebarStyle } from './style'
 
 const Sidebar = ({
   tree,
@@ -14,13 +14,9 @@ const Sidebar = ({
   setSelectedFilePath,
   selectedFilePath
 }) => {
-  const [isEnabled, setIsEnabled] = useState(false)
-  useEffect(() => {
-    setTimeout(() => setIsEnabled(true), 2000)
-  }, [])
   return (
-    <aside className={dummyStyle}>
-      <PanelNameStyle className='panel-name' isEnabled={isEnabled}>Explorer</PanelNameStyle>
+    <aside className={sidebarStyle}>
+      <h2 className={panelNameStyle}>Explorer</h2>
       <Label
         setEditorContent={setEditorContent}
         setSelectedFilePath={setSelectedFilePath}
@@ -53,10 +49,10 @@ const Label = ({
   if (type === 'folder') {
     return (
       <>
-        <span className='label' style={{ paddingLeft: `${depth * 10}px` }} onClick={toggleCollapse}>
+        <LabelStyle style={{ paddingLeft: `${depth * 10}px` }} onClick={toggleCollapse}>
           {isCollapsed ? <ChevronRight /> : <ChevronDown />}
           <span>{getFileName(path)}</span>
-        </span>
+        </LabelStyle>
         {!isCollapsed &&
           nodes.map((node, index) => (
             <Label
@@ -75,17 +71,13 @@ const Label = ({
   if (type === 'file') {
     const Icon = getFileIcon(path)
 
-    const className = `label ${
-      selectedFilePath === path && 'label--selected'
-          }`
-
     return (
-      <div className={className} style={{ paddingLeft: `${depth * 10}px` }} onClick={selectFile}>
+      <LabelStyle isSelected={selectedFilePath === path} style={{ paddingLeft: `${depth * 10}px` }} onClick={selectFile}>
         <Icon />
         <span className='label__file-name'>
           {getFileName(path)}
         </span>
-      </div>
+      </LabelStyle>
     )
   }
 
