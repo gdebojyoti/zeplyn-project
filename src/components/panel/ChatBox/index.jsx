@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { inputStyle } from './style'
 
-const ChatBox = ({ onNewMessage }) => {
+const ChatBox = ({ onNewMessage, isSendingDisabled }) => {
   const [msg, setMsg] = useState('')
 
   const onType = e => {
@@ -10,6 +10,11 @@ const ChatBox = ({ onNewMessage }) => {
   }
 
   const onKeyDown = e => {
+    // ignore if disabled
+    if (isSendingDisabled) {
+      return
+    }
+
     if (e.key === 'Enter') {
       // update parent
       onNewMessage(msg)
@@ -24,7 +29,8 @@ const ChatBox = ({ onNewMessage }) => {
       className={inputStyle}
       onChange={onType}
       onKeyDown={onKeyDown}
-      placeholder='Ask Copilot'
+      // TODO: make this message concise; add CTA instead
+      placeholder='Type your message, and press enter to ask Copilot'
       value={msg}
     />
   )

@@ -1,32 +1,25 @@
-import { panelStyle } from './style'
+import { useDispatch, useSelector } from 'react-redux'
+
 import ChatMessages from '../../panel/ChatMessages'
 import ChatBox from '../../panel/ChatBox'
 
-const msgList = [
-  {
-    user: { name: 'You' },
-    msg: {
-      text: 'Tell me if this file has syntax errors',
-      path: '/src/api/dummy.json'
-    }
-  },
-  {
-    user: { name: 'Zeplyn Copilot' },
-    msg: {
-      text: 'This function is not implemented but I got a dummy.ts as input'
-    }
-  }
-]
+import { panelStyle } from './style'
+import { sendMessage } from './fetchData'
 
 const ChatPanel = () => {
+  const dispatch = useDispatch()
+  const chat = useSelector(state => state.rightSidebar.chat)
+  const { messages, isDisabled } = chat || {}
+
   const onNewMessage = (msg) => {
     console.log('new msg:', msg)
+    sendMessage(dispatch, msg)
   }
 
   return (
     <div className={panelStyle}>
-      <ChatMessages messages={msgList} />
-      <ChatBox onNewMessage={onNewMessage} />
+      <ChatMessages messages={messages} />
+      <ChatBox onNewMessage={onNewMessage} isSendingDisabled={isDisabled} />
     </div>
   )
 }
