@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import Explorer from './components/Explorer'
 import Editor from './components/Editor'
+import RightSidebar from './components/RightSidebar'
 
 // Styles
 import globalStyles from './globalStyles'
@@ -32,6 +33,7 @@ export default function App () {
         selectedFilePath={selectedFilePath}
         editorContent={editorContent}
       />
+      <RightSidebar />
     </div>
   )
 }

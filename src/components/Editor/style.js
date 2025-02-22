@@ -4,6 +4,7 @@ export const editorStyle = css`
   flex-grow: 1;
   background-color: var(--editor-bg-color);
   border-left: solid 1px #333;
+  border-right: solid 1px #333;
 `
 
 export const editorHeaderStyle = css`
