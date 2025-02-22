@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Provider } from 'react-redux'
 
 import Explorer from './components/Explorer'
@@ -11,11 +11,11 @@ import globalStyles from './globalStyles'
 import store from './store'
 
 import { getTree } from './api/getTree'
+import getFileContent from './utils/getFileContent'
 
 export default function App () {
   const [tree, setTree] = useState({})
   const [selectedFilePath, setSelectedFilePath] = useState()
-  const [editorContent, setEditorContent] = useState()
 
   useEffect(() => {
     getTree()
@@ -25,12 +25,13 @@ export default function App () {
       })
   }, [])
 
+  const editorContent = useMemo(() => getFileContent(tree, selectedFilePath), [tree, selectedFilePath])
+
   return (
     <Provider store={store}>
       <div className={globalStyles}>
         <Explorer
           tree={tree}
-          setEditorContent={setEditorContent}
           setSelectedFilePath={setSelectedFilePath}
           selectedFilePath={selectedFilePath}
         />

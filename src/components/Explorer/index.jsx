@@ -10,7 +10,6 @@ import { explorerStyle, panelNameStyle, LabelStyle } from './style'
 
 const Explorer = ({
   tree,
-  setEditorContent,
   setSelectedFilePath,
   selectedFilePath
 }) => {
@@ -18,7 +17,6 @@ const Explorer = ({
     <aside className={explorerStyle}>
       <h2 className={panelNameStyle}>Explorer</h2>
       <Label
-        setEditorContent={setEditorContent}
         setSelectedFilePath={setSelectedFilePath}
         selectedFilePath={selectedFilePath}
         tree={tree}
@@ -29,20 +27,18 @@ const Explorer = ({
 
 const Label = ({
   tree,
-  setEditorContent,
   setSelectedFilePath,
   selectedFilePath,
   depth = 0
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const { type, path, nodes, content } = tree
+  const { type, path, nodes } = tree
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed)
   }
 
   const selectFile = () => {
-    setEditorContent(content)
     setSelectedFilePath(path)
   }
 
@@ -56,7 +52,6 @@ const Label = ({
         {!isCollapsed &&
           nodes.map((node, index) => (
             <Label
-              setEditorContent={setEditorContent}
               setSelectedFilePath={setSelectedFilePath}
               selectedFilePath={selectedFilePath}
               tree={node}
