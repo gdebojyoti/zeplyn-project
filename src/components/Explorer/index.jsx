@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { ChevronDown } from '../../assets/ChevronDown'
 import { ChevronRight } from '../../assets/ChevronRight'
@@ -6,18 +7,20 @@ import { ChevronRight } from '../../assets/ChevronRight'
 import getFileIcon from '../../utils/getFileIcon'
 import getFileName from '../../utils/getFileName'
 
+import { updateSelectedFilePath } from '../../store/slices/explorerSlice'
+
 import { explorerStyle, panelNameStyle, LabelStyle } from './style'
 
-const Explorer = ({
-  tree,
-  setSelectedFilePath,
-  selectedFilePath
-}) => {
+const Explorer = () => {
+  const dispatch = useDispatch()
+  const tree = useSelector(state => state.explorer.tree)
+  const selectedFilePath = useSelector(state => state.explorer.selectedFilePath)
+
   return (
     <aside className={explorerStyle}>
       <h2 className={panelNameStyle}>Explorer</h2>
       <Label
-        setSelectedFilePath={setSelectedFilePath}
+        setSelectedFilePath={path => dispatch(updateSelectedFilePath(path))}
         selectedFilePath={selectedFilePath}
         tree={tree}
       />
