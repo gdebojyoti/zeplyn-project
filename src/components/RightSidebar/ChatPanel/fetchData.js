@@ -1,7 +1,14 @@
 import { addChatMessage, disableChat } from '../../../store/slices/rightSidebarSlice'
 import llm from '../../../api/llm'
+import getParentFolder from '../../../utils/getParentFolder'
 
-export function sendMessage (dispatch, msg) {
+export function sendMessage (dispatch, msg, filePath) {
+  // check if folder is to be included
+  let folderPath = ''
+  if (msg.includes('/folder')) {
+    folderPath = getParentFolder(filePath)
+  }
+
   // show msg in chat panel
   dispatch(addChatMessage({
     // TODO: hard-coded name should be replaced with value from redux store
@@ -15,7 +22,10 @@ export function sendMessage (dispatch, msg) {
   dispatch(disableChat(true))
 
   // hit LLM API
-  llm('dummy.json').then(data => {
+  llm({
+    msg,
+    path: folderPath || filePath // NOTE: if folder is to be referred, skip file
+  }).then(data => {
     // show msg in chat panel
     dispatch(addChatMessage({
       // TODO: hard-coded name should be replaced with value from config

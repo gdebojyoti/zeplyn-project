@@ -13,7 +13,7 @@ const ChatPanel = () => {
 
   const onNewMessage = (msg) => {
     console.log('new msg:', msg)
-    sendMessage(dispatch, msg)
+    sendMessage(dispatch, msg, 'src/dummy.json')
   }
 
   return (
