@@ -1,10 +1,10 @@
 import { css } from '@linaria/core'
 
 export const messageStyle = css`
-  margin-top: 30px;
+  margin-block: 30px;
 
   &:first-of-type {
-    margin-top: 0;
+    margin-top: 15px;
   }
 `
 
