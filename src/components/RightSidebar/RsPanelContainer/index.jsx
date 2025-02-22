@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import ChatPanel from './ChatPanel'
+import ChatPanel from '../ChatPanel'
 
 import { panelContainerStyle } from './style'
 
