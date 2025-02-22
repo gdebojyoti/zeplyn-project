@@ -1,4 +1,9 @@
 export default function getParentFolder (path) {
+  // ignore for missing paths
+  if (!path) {
+    return
+  }
+
   // get last slash
   const lastSlashIndex = path.lastIndexOf('/')
 

@@ -5,7 +5,7 @@ import getParentFolder from '../../../utils/getParentFolder'
 export function sendMessage (dispatch, msg, filePath) {
   // check if folder is to be included
   let folderPath = ''
-  if (msg.includes('/folder')) {
+  if (msg.includes('folder') || msg.includes('dir')) {
     folderPath = getParentFolder(filePath)
   }
 

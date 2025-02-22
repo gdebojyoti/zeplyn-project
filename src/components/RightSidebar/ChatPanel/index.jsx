@@ -9,11 +9,11 @@ import { sendMessage } from './fetchData'
 const ChatPanel = () => {
   const dispatch = useDispatch()
   const chat = useSelector(state => state.rightSidebar.chat)
+  const selectedFilePath = useSelector(state => state.explorer.selectedFilePath)
   const { messages, isDisabled } = chat || {}
 
   const onNewMessage = (msg) => {
-    console.log('new msg:', msg)
-    sendMessage(dispatch, msg, 'src/dummy.json')
+    sendMessage(dispatch, msg, selectedFilePath)
   }
 
   return (

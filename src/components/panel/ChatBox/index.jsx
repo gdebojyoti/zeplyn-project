@@ -6,7 +6,7 @@ const ChatBox = ({ onNewMessage, isSendingDisabled }) => {
   const [msg, setMsg] = useState('')
 
   const onType = e => {
-    setMsg(e.target.value)
+    setMsg(e.target.value.replace('\n', ''))
   }
 
   const onKeyDown = e => {
@@ -15,7 +15,7 @@ const ChatBox = ({ onNewMessage, isSendingDisabled }) => {
       return
     }
 
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && msg?.trim()) {
       // update parent
       onNewMessage(msg)
 
