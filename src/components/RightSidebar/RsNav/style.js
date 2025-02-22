@@ -8,11 +8,21 @@ export const navStyle = css`
 export const iconWrapperStyle = css`
   width: 50px;
   height: 50px;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
-  /* opacity: .5; */
+  opacity: .5;
 
-  border-left: solid 2px #fff;
+  border-left: solid 2px transparent;
+  border-right: solid 2px transparent;
+
+  &:hover {
+    opacity: 1;
+  }
+`
+
+export const activeIconWrapperStyle = css`
+  border-left-color: #fff;
+  opacity: 1;
 `
 
 export const iconStyle = css`

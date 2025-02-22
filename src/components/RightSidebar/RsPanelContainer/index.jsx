@@ -1,13 +1,17 @@
+import { useSelector } from 'react-redux'
+
 import ChatPanel from './ChatPanel'
+
 import { panelContainerStyle } from './style'
 
 const RsPanelContainer = () => {
-  const activePanel = 'chat'
+  const activePanelKey = useSelector(state => state.rightSidebar.activePanelKey)
 
   let Panel = null
 
-  switch (activePanel) {
+  switch (activePanelKey) {
     case 'chat': {
+      // TODO: use dynamic loading instead
       Panel = ChatPanel
     }
   }
