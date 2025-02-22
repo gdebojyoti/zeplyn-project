@@ -20,6 +20,7 @@ export const pathStyle = css`
   border: solid 1px #444;
   font-size: 11px;
   border-radius: 4px;
+  cursor: pointer;
 
   svg {
     margin-right: 4px;

@@ -14,7 +14,8 @@ export function sendMessage (dispatch, msg, filePath) {
     // TODO: hard-coded name should be replaced with value from redux store
     user: { name: 'You' },
     msg: {
-      text: msg
+      text: msg,
+      filePath
     }
   }))
 
