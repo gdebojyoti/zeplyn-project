@@ -6,16 +6,16 @@ import { ChevronRight } from '../../assets/ChevronRight'
 import getFileIcon from '../../utils/getFileIcon'
 import getFileName from '../../utils/getFileName'
 
-import { LabelStyle, panelNameStyle, sidebarStyle } from './style'
+import { explorerStyle, panelNameStyle, LabelStyle } from './style'
 
-const Sidebar = ({
+const Explorer = ({
   tree,
   setEditorContent,
   setSelectedFilePath,
   selectedFilePath
 }) => {
   return (
-    <aside className={sidebarStyle}>
+    <aside className={explorerStyle}>
       <h2 className={panelNameStyle}>Explorer</h2>
       <Label
         setEditorContent={setEditorContent}
@@ -84,4 +84,4 @@ const Label = ({
   return null
 }
 
-export default Sidebar
+export default Explorer

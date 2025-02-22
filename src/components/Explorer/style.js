@@ -1,7 +1,7 @@
 import { css } from '@linaria/core'
 import { styled } from '@linaria/react'
 
-export const sidebarStyle = css`
+export const explorerStyle = css`
   min-width: 250px;
   font-size: 14px;
   background-color: var(--panel-bg-color);

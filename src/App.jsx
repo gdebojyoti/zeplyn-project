@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import Sidebar from './components/Sidebar'
+import Explorer from './components/Explorer'
 import Editor from './components/Editor'
 
 // Styles
@@ -22,7 +22,7 @@ export default function App () {
 
   return (
     <div className={globalStyles}>
-      <Sidebar
+      <Explorer
         tree={tree}
         setEditorContent={setEditorContent}
         setSelectedFilePath={setSelectedFilePath}
