@@ -1,2 +1,2 @@
 export const ROOT_FOLDER_NAME = 'project'
-export const APP_NAME = 'Zeplyn Copilot'
+export const AI_APP_NAME = 'Zeplyn Copilot'

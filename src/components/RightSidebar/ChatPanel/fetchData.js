@@ -1,4 +1,4 @@
-import { APP_NAME } from '../../../../config/variables'
+import { AI_APP_NAME } from '../../../../config/variables'
 import { addChatMessage, disableChat, openPanel } from '../../../store/slices/rightSidebarSlice'
 import llm from '../../../api/llm'
 import getParentFolder from '../../../utils/getParentFolder'
@@ -36,7 +36,7 @@ export function sendMessage (dispatch, msg, filePath, shouldOpenPanel) {
     // show msg in chat panel
     dispatch(addChatMessage({
       // TODO: hard-coded name should be replaced with value from config
-      user: { name: APP_NAME },
+      user: { name: AI_APP_NAME },
       msg: {
         text: data
       }
