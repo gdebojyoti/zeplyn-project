@@ -12,6 +12,9 @@ const rightSidebarSlice = createSlice({
   name: 'rightSidebar',
   initialState,
   reducers: {
+    openPanel: (initialState, action) => {
+      initialState.activePanelKey = action.payload
+    },
     togglePanel: (initialState, action) => {
       const oldKey = initialState.activePanelKey
       const newKey = action.payload
@@ -26,5 +29,5 @@ const rightSidebarSlice = createSlice({
   }
 })
 
-export const { togglePanel, addChatMessage, disableChat } = rightSidebarSlice.actions
+export const { openPanel, togglePanel, addChatMessage, disableChat } = rightSidebarSlice.actions
 export default rightSidebarSlice.reducer

@@ -97,7 +97,7 @@ const Label = ({
       {
         label: 'Explain the utility of this file',
         onClick: () => {
-          sendMessage(dispatch, 'Explain the utility of this file', path)
+          sendMessage(dispatch, 'Explain the utility of this file', path, true)
         }
       }
     ]

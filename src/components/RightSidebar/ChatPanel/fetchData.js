@@ -1,9 +1,14 @@
 import { APP_NAME } from '../../../../config/variables'
-import { addChatMessage, disableChat } from '../../../store/slices/rightSidebarSlice'
+import { addChatMessage, disableChat, openPanel } from '../../../store/slices/rightSidebarSlice'
 import llm from '../../../api/llm'
 import getParentFolder from '../../../utils/getParentFolder'
 
-export function sendMessage (dispatch, msg, filePath) {
+export function sendMessage (dispatch, msg, filePath, shouldOpenPanel) {
+  // open chat panel if applicable
+  if (shouldOpenPanel) {
+    dispatch(openPanel('chat'))
+  }
+
   // check if folder is to be included
   let folderPath = ''
   if (msg.includes('folder') || msg.includes('dir')) {
