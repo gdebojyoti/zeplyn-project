@@ -1,5 +1,7 @@
 # The Zeplyn Editor
 
+Available at: https://zeplyn-project.vercel.app/
+
 ## Setup
 Run the following commands in your terminal:
 1. `git clone https://github.com/gdebojyoti/zeplyn-project`
