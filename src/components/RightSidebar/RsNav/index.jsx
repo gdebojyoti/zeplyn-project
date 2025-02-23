@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import { APP_NAME } from '../../../../config/variables'
 import { togglePanel as togglePanelAction } from '../../../store/slices/rightSidebarSlice'
 
 import chatIcon from '../../../assets/icons/chat.png'
@@ -10,7 +11,7 @@ const menu = [
   {
     key: 'chat',
     icon: chatIcon,
-    title: 'Chat with Zeplyn Copilot'
+    title: `Chat with ${APP_NAME}`
   }
 ]
 

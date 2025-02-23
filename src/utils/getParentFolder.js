@@ -1,3 +1,5 @@
+import { ROOT_FOLDER_NAME } from '../../config/variables'
+
 export default function getParentFolder (path) {
   // ignore for missing paths
   if (!path) {
@@ -9,7 +11,7 @@ export default function getParentFolder (path) {
 
   // handle '/' cases
   if (lastSlashIndex <= 0) {
-    return 'project'
+    return ROOT_FOLDER_NAME
   }
 
   return path.substring(0, lastSlashIndex)

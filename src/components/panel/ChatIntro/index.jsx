@@ -1,12 +1,14 @@
+import { APP_NAME } from '../../../../config/variables'
+
 import { wrapperStyle, headerWrapperStyle, titleStyle, infoStyle, footerStyle, commandStyle } from './style.js'
 
 const ChatIntro = () => {
   return (
     <div className={wrapperStyle}>
       <div className={headerWrapperStyle}>
-        <h2 className={titleStyle}>Ask Zeplyn Copilot</h2>
+        <h2 className={titleStyle}>Ask {APP_NAME}</h2>
         <div className={infoStyle}>
-          Zeplyn Copilot is not powered by AI, so you are on your own.
+          {APP_NAME} is not powered by AI, so you are on your own.
           Review your code carefully before deploying.
           <br />
           Good luck!

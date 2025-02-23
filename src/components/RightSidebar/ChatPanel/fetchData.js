@@ -1,3 +1,4 @@
+import { APP_NAME } from '../../../../config/variables'
 import { addChatMessage, disableChat } from '../../../store/slices/rightSidebarSlice'
 import llm from '../../../api/llm'
 import getParentFolder from '../../../utils/getParentFolder'
@@ -30,7 +31,7 @@ export function sendMessage (dispatch, msg, filePath) {
     // show msg in chat panel
     dispatch(addChatMessage({
       // TODO: hard-coded name should be replaced with value from config
-      user: { name: 'Zeplyn Copilot' },
+      user: { name: APP_NAME },
       msg: {
         text: data
       }
