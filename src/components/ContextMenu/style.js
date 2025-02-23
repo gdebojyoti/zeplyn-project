@@ -31,6 +31,6 @@ export const menuItemStyle = css`
 
   &:hover {
     color: #eee;
-    background-color: #3498db;
+    background-color: var(--theme-color);
   }
 `

@@ -4,21 +4,7 @@ const initialState = {
   activePanelKey: 'chat',
   chat: {
     isDisabled: false,
-    messages: [
-      {
-        user: { name: 'You' },
-        msg: {
-          text: 'Tell me if this file has syntax errors?',
-          path: '/src/api/dummy.json'
-        }
-      },
-      {
-        user: { name: 'Zeplyn Copilot' },
-        msg: {
-          text: 'This function is not implemented but I got a dummy.ts as input'
-        }
-      }
-    ]
+    messages: []
   }
 }
 

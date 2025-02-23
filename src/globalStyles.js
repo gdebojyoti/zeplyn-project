@@ -17,6 +17,7 @@ const globalStyles = css`
       --panel-highlight-color: #36363B;
       --panel-hover-color: #2A2D2E;
       --editor-bg-color: #202020;
+      --theme-color: #d35400;
     }
 
     html, body, #root {

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import ChatIntro from '../../panel/ChatIntro'
 import ChatMessages from '../../panel/ChatMessages'
 import ChatBox from '../../panel/ChatBox'
 
@@ -18,7 +19,8 @@ const ChatPanel = () => {
 
   return (
     <div className={panelStyle}>
-      <ChatMessages messages={messages} />
+      {!messages.length && <ChatIntro />}
+      {!!messages.length && <ChatMessages messages={messages} />}
       <ChatBox onNewMessage={onNewMessage} isSendingDisabled={isDisabled} />
     </div>
   )
