@@ -12,6 +12,9 @@ const ChatIntro = () => {
           Review your code carefully before deploying.
           <br />
           Good luck!
+          <br />
+          <br />
+          P.S. Click the button on the top right to close this panel
         </div>
       </div>
       <div className={footerStyle}>
